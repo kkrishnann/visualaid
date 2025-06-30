@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions - Accessible Question Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="main-title">Accessible Question Application</h1>
+            <p id="description" class="sr-only">Question navigation page for visually impaired users.</p>
+        </header>
+
+        <main role="main" aria-labelledby="main-title">
+            <div class="question-container">
+                <div class="question-display" role="region" aria-live="polite">
+                    <h2 id="current-question" class="question-text"></h2>
+                </div>
+                
+                <div class="navigation-controls">
+                    <button 
+                        id="next-button" 
+                        class="btn btn-primary" 
+                        aria-describedby="button-description">
+                        Next Question
+                    </button>
+                    <p id="button-description" class="sr-only">
+                        Press this button to move to the next question. The screen reader will automatically read the new question.
+                    </p>
+                </div>
+
+                <div class="progress-indicator">
+                    <p id="progress-text" class="progress-text" aria-live="polite">
+                        Question <span id="current-number">1</span> of <span id="total-questions">5</span>
+                    </p>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="questions-config.js"></script>
+    <script src="questions-simple.js"></script>
+</body>
+</html>

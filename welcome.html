@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Accessible Question Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="main-title">Accessible Question Application</h1>
+            <p id="description" class="sr-only">An application designed for visually impaired users with screen reader support.</p>
+        </header>
+
+        <main role="main" aria-labelledby="main-title">
+            <div class="welcome-screen">
+                <div class="welcome-content">
+                    <h2 id="welcome-title">Welcome to the Accessible Question Application</h2>
+                    <p class="welcome-description">
+                        This application is designed specifically for visually impaired users with screen reader support. 
+                        You will be presented with a series of questions that you can navigate through using the Next button.
+                    </p>
+                    <div class="welcome-features">
+                        <h3>Features:</h3>
+                        <ul>
+                            <li>Reader compatibility</li>
+                            <li>Keyboard navigation support</li>
+                            <li>Progress tracking</li>
+                        </ul>
+                    </div>
+                    <div class="start-controls">
+                        <a 
+                            href="questions.html" 
+                            id="start-button" 
+                            class="btn btn-primary btn-large"
+                            role="button"
+                            aria-describedby="start-description">
+                            Start Questions
+                        </a>
+                        <p id="start-description" class="sr-only">
+                            Press this button to begin the question application. The first question will be read aloud by your screen reader.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        // Focus on start button when page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            const startButton = document.getElementById("start-button");
+            startButton.focus();
+            
+            // Announce welcome to screen readers
+            const announcement = document.createElement("div");
+            announcement.setAttribute("aria-live", "polite");
+            announcement.setAttribute("aria-atomic", "true");
+            announcement.className = "sr-only";
+            announcement.textContent = "Welcome to the Accessible Question Application. Press the Start Questions button to begin.";
+            document.body.appendChild(announcement);
+            
+            setTimeout(() => {
+                if (announcement.parentNode) {
+                    announcement.parentNode.removeChild(announcement);
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

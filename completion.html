@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed - Accessible Question Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="main-title">Accessible Question Application</h1>
+            <p id="description" class="sr-only">Completion page for the question application.</p>
+        </header>
+
+        <main role="main" aria-labelledby="main-title">
+            <div class="completion-message" role="region" aria-live="polite">
+                <h2>Thank you for completing all questions!</h2>
+                <p>You have successfully answered all questions in this application.</p>
+                <div class="completion-actions">
+                    <a href="questions.html" class="btn btn-secondary" role="button">
+                        Start Over
+                    </a>
+                    <a href="welcome.html" class="btn btn-primary" role="button">
+                        Return to Welcome
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Designed with accessibility in mind for visually impaired users.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Focus on restart button when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const restartButton = document.querySelector('.btn-secondary');
+            restartButton.focus();
+            
+            // Announce completion to screen readers
+            const announcement = document.createElement('div');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('aria-atomic', 'true');
+            announcement.className = 'sr-only';
+            announcement.textContent = 'Congratulations! You have completed all questions. You can press Start Over to begin again, or Return to Welcome to go back to the main screen.';
+            document.body.appendChild(announcement);
+            
+            setTimeout(() => {
+                if (announcement.parentNode) {
+                    announcement.parentNode.removeChild(announcement);
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
