@@ -8,7 +8,9 @@ const DEFAULT_QUESTIONS = [
     "Tell me about your family",
     "Tell me about the city you live in?",
     "What is an accomplishment that you are proud of?",
-    "What are your strengths?"
+    "What are your strengths?",
+    "What did you like as a kid?",
+    "What recent news story is interesting to you?"
 ];
 
 // Export for use in questions-simple.js
