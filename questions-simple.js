@@ -62,7 +62,7 @@ function setupKeyboardNavigation() {
             nextQuestion();
         }
         if (event.key === 'Escape') {
-            window.location.href = 'welcome.html';
+            window.location.href = 'index.html';
         }
     });
 }
