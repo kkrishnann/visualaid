@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>this is a title</title>
+        <style>
+            .visually-hidden {
+                position: absolute;
+                left: -9999px;
+                width: 1px;
+                height: 1px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>h1 heading</h1>
+        <p>Question 1 of 10</p>
+        <p>The actual question</p>
+        <div id="screen-reader-announcer" aria-live="assertive" class="visually-hidden" tabindex="-1"></div>
+        <button id="next-btn">Next Question</button>
+
+        <script>
+            function srSpeak(text) {
+                var el = document.getElementById("screen-reader-announcer");
+                el.textContent = "";
+                setTimeout(() => {
+                    el.textContent = text;
+                    el.focus();
+                }, 100);
+            }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                srSpeak("expicit announce")
+            });
+        </script>
+    </body>
+</html>
